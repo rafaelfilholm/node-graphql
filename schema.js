@@ -34,7 +34,7 @@ let schema = new graphql.GraphQLSchema({
                         type: graphql.GraphQLInt
                     }
                 }, 
-                resolve: function (_, args) {
+                resolve: (_, args) => {
                     let response = users.find(function(user){
                         return (user.id ===  args.id)
                     })
@@ -43,9 +43,7 @@ let schema = new graphql.GraphQLSchema({
             },
             users: {
                 type: new graphql.GraphQLList(userType),
-                resolve: function (_ , args) {
-                    return users
-                }
+                resolve: () => users
             }
         }
     })
